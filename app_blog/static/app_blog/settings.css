@@ -1,0 +1,32 @@
+#navbarCollapse {
+
+    background-color:  rgb(61, 64, 91);
+    color:  rgb(61, 64, 91);
+}
+
+
+.navbar {
+
+    --bs-navbar-padding-y: 0px;
+
+}
+
+
+#id_import_something {
+
+    
+    appearance: none;
+
+}
+
+#id_current_user_username {
+
+    display: none; 
+
+}
+
+#id_generated_code {
+
+    display: none;
+
+}

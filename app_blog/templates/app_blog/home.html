@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <h2>this is home page </h2>
+
+    {% for post in posts %}
+
+        <h2> {{post.specs.title}} </h2>
+        
+        {% if post.image %}
+        <img src="{{ post.image.import_something.url }}" class="img-responsive" style="width: 30%; height: 30%; object-fit: contain;" />
+        {% endif %}
+
+    
+    
+    {% endfor %}
+
+    <br><br><br><br><br>
+
+
+
+
+    {% for suggest in suggests_follow%}
+
+        <h4>{{suggest.username}}</h4>
+        <form action="" method="POST">
+
+            <a href="{% url 'app_blog:follow_unfollow' username=suggest.username %}" type="submit"> follow </a>
+        </form>
+    {%endfor%} 
+    
+    
+    {% for suggest in suggests_unfollow%}
+
+        <h4>{{suggest.username}}</h4>
+        <form action="" method="POST">
+
+            <a href="{% url 'app_blog:follow_unfollow' username=suggest.username %}" type="submit"> unfollow </a>
+        </form>
+    {%endfor%} 
+    
+
+
+{% endblock%}

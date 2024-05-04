@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block content%}
+
+    {%if user.is_authenticated%}
+        <div class="welcome_message_box">
+            <h2 id="welcome_message">Welcome {{user.username}}</h2>
+            <!--<h2 id="welcome_message"> You have {{mission_count}} mission(s) to done!</h2>-->
+        </div>
+    {%else%}
+
+
+<div class="container" style="width: 80%;">
+    <form action="{% url 'login' %}" style=" margin-inline: 20%;" method="POST">
+        {% csrf_token %}
+
+        {% for field in form %}
+
+        <div class="form-label" style="margin-left: 3rem;">
+            {{field.label_tag}}
+        </div>
+        <div class="signup_inputs" style="margin-left: 3rem;">            
+            {{field}}
+        </div>
+        {%endfor%}
+
+        <button type="submit" class="btn btn-primary" style="margin-left: 3rem; margin-top: 2rem;">Login</button>
+    </form>
+
+
+</div>
+
+{%endif%}
+
+{%endblock%}
