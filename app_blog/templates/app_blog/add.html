@@ -2,37 +2,39 @@
 {% load static %}
 {% block content %}
 
-<form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    
-    <div class="mb-3">
 
-      <label for="post_title" class="form-label">Title</label>
-      <input type="text" class="form-control" id="post_title" name="post_title" required="">
+<div class="block_div">
+  <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
       
-    </div>
-    <div class="mb-3">
-      <label for="post_index" class="form-label">Index</label>
-      <input type="text" class="form-control" id="post_index" name="post_index" required="">
-    </div>
-    
-    <button type="submit" class="btn btn-primary" > Push! </button>
-    
-    <input type="text" name="current_user_username" maxlength="20" id="id_current_user_username" value="{{request.user.username}}" readonly>
-    <input type="text" name="generated_code" maxlength="20" id="id_generated_code" value="{{code}}" readonly>
+      <div class="mb-3">
 
-    <input type="button" class="btn btn-dark" value="Choose" name="button_import_something" onclick="document.getElementById('id_import_something').click()">
-    <input type="file" name="import_something" accept="image/*" id="id_import_something" style="display: none;">
+        <label for="post_title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="post_title" name="post_title" required="">
+        
+      </div>
+      <div class="mb-3">
+        <label for="post_index" class="form-label">Index</label>
+        <input type="text" class="form-control" id="post_index" name="post_index" required="">
+      </div>
+      
+      <button type="submit" class="btn btn-primary" > Push! </button>
+      
+      <input type="text" name="current_user_username" maxlength="20" id="id_current_user_username" value="{{request.user.username}}" readonly>
+      <input type="text" name="generated_code" maxlength="20" id="id_generated_code" value="{{code}}" readonly>
 
-
-
-    
-
-    
-
-  </form>
+      <input type="button" class="btn btn-dark" value="Choose" name="button_import_something" onclick="document.getElementById('id_import_something').click()">
+      <input type="file" name="import_something" accept="image/*" id="id_import_something" style="display: none;">
 
 
+
+      
+
+      
+
+    </form>
+
+</div>
   
 
 {% endblock%}

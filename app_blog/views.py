@@ -32,13 +32,14 @@ def home(request):
         following_accounts_usernames.append(account.followed_who)
     
     for username in following_accounts_usernames:
-        for post in models.user_post.objects.filter(who_pushed = username).order_by('added_at').all():
+        for post in models.user_post.objects.order_by('-added_at').filter(who_pushed = username).all():
             home_page_posts_gcs.append(post.generated_code)
     
     for post_gc in home_page_posts_gcs:
         home_page_posts.append(models.image_and_specs.objects.get(generated_code = post_gc))
-
-
+    
+    
+    sorted_home_page_posts = sorted(home_page_posts , key=lambda x: x.added_at , reverse=True)
         #home_page_posts.append(models.user_post.objects.get(id= post_id))
         #print(f' post id {post_id}')
 
@@ -69,7 +70,7 @@ def home(request):
     
 
 
-    return render(request, 'app_blog/home.html' , context={ 'posts' : home_page_posts , 'suggests_follow' :  suggest_usernames_follow , 'suggests_unfollow' : suggest_usernames_followed })
+    return render(request, 'app_blog/home.html' , context={ 'posts' : sorted_home_page_posts , 'suggests_follow' :  suggest_usernames_follow , 'suggests_unfollow' : suggest_usernames_followed })
 
 
 

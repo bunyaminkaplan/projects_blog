@@ -2,44 +2,58 @@
 {% load static %}
 {% block content %}
 
-    <h2>this is home page </h2>
+<div class="block_div">
+    <div class="container">
+        <div class="main-content" style="margin-top: 100px">
+            <div class="grid-container" style="grid-template-columns: auto auto; display: grid; grid-auto-columns: auto;">
+                {% for post in posts %}
+                    <div class="grid-item">
+                        <div class="card" style="width: 18rem; margin: 1rem;" >
+                            {% if post.image %}
+                                <img src="{{ post.image.import_something.url }}" class="card-img-top" alt="..." style=" object-fit: fill; object-position: center; max-height: 27rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ post.specs.title }}</h5>
+                                    <p class="card-text">{{ post.specs.index }}</p>
+                                </div> 
+                
+                            {% else %}
+                                <div class="card-body" id="card-body-without-image">
+                                    <h5 class="card-title">{{ post.specs.title }}</h5>
+                                    <p class="card-text">{{ post.specs.index }}</p>
+                                </div>
+                            {% endif %}
+                            <div class="card-body" style="border-bottom-left-radius: 2rem; border-bottom-right-radius: 2rem;">
+                                <a href="#" class="card-link">delete(disabled)</a>
+                                <a href="#" class="card-link">like(disabled)</a>
+                            </div>
+                        </div>
+                    </div>          
+                {% endfor %}
+            </div>
+        </div>
+            
+        <div class="sidebar sticky">
+            <!-- Your sidebar content here -->
+            <div class="grid-container" style="display: grid; grid-template-columns:auto auto; grid-auto-columns: auto;">
+                {% for suggest in suggests_follow%}
+                    <span class="grid-item"><h4 id="suggest_username">{{suggest.username}}</h4></span>
+                    <form action="" method="POST">
+                        <span class="grid-item"><a class="btn btn-light" href="{% url 'app_blog:follow_unfollow' username=suggest.username %}" type="submit"> follow </a></span>
+                    </form>
+                {%endfor%} 
+            </div>
 
-    {% for post in posts %}
+            <div class="grid-container" style="display: grid; grid-template-columns:auto auto; grid-auto-columns: auto;">
+                {% for suggest in suggests_unfollow%}
+                    <span class="grid-item"><h4 id="suggest_username">{{suggest.username}}</h4></span>
+                    <form action="" method="POST">
+                        <span class="grid-item"><a class="btn btn-dark" href="{% url 'app_blog:follow_unfollow' username=suggest.username %}" type="submit"> unfollow </a></span>
+                    </form>
+                {%endfor%} 
+            </div>
+        </div>
+    </div>
 
-        <h2> {{post.specs.title}} </h2>
-        
-        {% if post.image %}
-        <img src="{{ post.image.import_something.url }}" class="img-responsive" style="width: 30%; height: 30%; object-fit: contain;" />
-        {% endif %}
-
-    
-    
-    {% endfor %}
-
-    <br><br><br><br><br>
-
-
-
-
-    {% for suggest in suggests_follow%}
-
-        <h4>{{suggest.username}}</h4>
-        <form action="" method="POST">
-
-            <a href="{% url 'app_blog:follow_unfollow' username=suggest.username %}" type="submit"> follow </a>
-        </form>
-    {%endfor%} 
-    
-    
-    {% for suggest in suggests_unfollow%}
-
-        <h4>{{suggest.username}}</h4>
-        <form action="" method="POST">
-
-            <a href="{% url 'app_blog:follow_unfollow' username=suggest.username %}" type="submit"> unfollow </a>
-        </form>
-    {%endfor%} 
-    
-
+</div>
 
 {% endblock%}

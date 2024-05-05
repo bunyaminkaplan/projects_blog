@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {%block content%}
-
+<div class="block_div">
     {%if user.is_authenticated%}
         <div class="welcome_message_box">
             <h2 id="welcome_message">Welcome {{user.username}}</h2>
@@ -29,7 +29,7 @@
 
 
 </div>
-
+</div>
 {%endif%}
 
 {%endblock%}
