@@ -15,12 +15,6 @@
 
 }
 
-.container {
-    display: flex;
-    
-    
-}
-
 .sidebar {
 width: 250px; /* Adjust width as needed */
 background-color: #f0f0f0; /* Sidebar background color */
@@ -32,9 +26,10 @@ bottom: 0;
 }
 
 .main-content {
+
 margin-left: 250px; /* Adjust based on sidebar width */
 padding: 20px; /* Add padding to the main content */
-position: relative;
+
 z-index: 0;
 }
 
@@ -56,29 +51,41 @@ z-index: 0;
 
 }
 
-
 .navbar.navbar-expand-md.mb-4 {
 
     
      
     position : fixed;
-    background-color: rgba(29, 53, 87, 0.967);
+    background-color: rgba(109, 104, 117, 0.967);
     z-index: 5;
     top: 0;
     right: 0;
     left: 0;
-    outline: 2px dashed rgb(230, 57, 70);
+    outline: 3px solid rgb(255, 205, 178);
 }
 
 .block_div {
 
+    display: flex;
     margin-top: 5rem;
+
+}
+
+.block_div.add_page {
+
+    display: flex;
+    background-color: rgba(255, 205, 178, 0.400); 
+    width: fit-content; 
+    border-radius: 2rem;
+    align-items: center;
+    
+    
 
 }
 
 .navbar-brand {
 
-    --bs-navbar-brand-hover-color: rgb(168, 218, 220);
+    --bs-navbar-brand-hover-color: rgb(255, 205, 178);
     color: white;
     
 
@@ -86,12 +93,12 @@ z-index: 0;
 
 .sidebar.sticky {
 
-
-    background-color: rgb(29, 53, 87);
-    outline: 2px dashed rgb(230, 57, 70);
+    
+    background-color: rgb(109, 104, 117);
+    outline: 4px solid rgb(255, 205, 178);
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
-
+    box-shadow: 10px 7px  rgb(109, 104, 117);
 }
 
 #suggest_username {
@@ -101,30 +108,74 @@ z-index: 0;
 }
 
 .card-body {
-    background-color: rgb(230, 57, 70);
+    background-color: rgb(109, 104, 117);
+    transition: background-color 0.17s;  
+}
+
+.card-body:hover { 
+    background-color: rgb(255, 205, 178);
     
 }
 
 .card-title {
     color: white;
+    transition: color 0.17s;
 }
 
 .card-text {
+
     color: white;
-    
+    transition: color 0.17s;
     
 }
 
 .card {
-
     
-    border-radius: 2rem;
-
+    border-width: 3px;
+    border-radius: 2.22rem;
+    border-style: solid;
+    border-color: rgb(255, 205, 178);
+    transition: box-shadow 0.17s;
+    transition: background-color 0.17s;
+    
+    
 }
 
-.card-image-top {
+.card:hover {
+    border-color: rgb(109, 104, 117);
+    box-shadow: 5px 4px rgb(255, 205, 178);
+    transition: box-shadow 0.17s;
+    
+    .card-body{
+        background-color: rgb(255, 205, 178);
+    }
+    .card-img-top{
+        background-color: rgb(255, 205, 178);
+    }
+    .card-title {
+        color: black;
+    }
+    .card-text {
+        color: black;
+    }
 
-    border-radius: 2rem;
+    
+}
+
+.card-img-top {
+
+    object-fit: contain; 
+    object-position: center; 
+     
+    width: auto; 
+    height: 286px;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    background-color: rgb(109, 104, 117);
+    transition: background-color 0.17s;
+    padding: 1rem;
+    
+    
 }
 
 #card-body-without-image {
@@ -132,4 +183,203 @@ z-index: 0;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
 }
+
+.btn.btn-dark {
+
+    background-color: rgb(255, 205, 178);
+    color: black;
+    transition: 0.17s;
+    border-color: black;
+}
+
+.btn.btn-dark.choose_button {
+
+    background-color: rgb(255, 205, 178);
+    box-shadow: 3px 3px rgb(109, 104, 117);
+    
+}
+
+.btn.btn-dark.choose_button:hover {
+
+    background-color: rgb(109, 104, 117);
+    color: white;
+    box-shadow: -3px -3px rgb(255, 205, 178) ;
+    border-color: rgb(109, 104, 117);
+    
+}
+
+.btn.btn-dark:hover {
+
+    background-color: rgb(109, 104, 117);
+    color: white;
+    box-shadow: 3px 3px rgb(255, 205, 178) ;
+    border-color: white;
+}
+
+.form-control {
+
+    font-display: white;
+    background-color:rgba(109, 104, 117 , 0.8);
+    color: white;
+    width: auto;
+    border-color: rgb(255, 205, 178);
+    border-width: 2px;
+}
+
+.form-control:focus{
+    
+    border-color: rgb(109, 104, 117);
+    background-color: rgb(255, 205, 178);
+    box-shadow: 5px 5px rgb(109, 104, 117);
+}
+
+.form-control::placeholder{
+    color: white;
+}
+
+.form-control:focus::placeholder{
+    color: black;
+}
+
+.form-control:hover { 
+    border-color: rgb(109, 104, 117);
+    background-color: rgb(255, 205, 178);
+    box-shadow: 5px 5px rgb(109, 104, 117);  
+    color: black;
+}
+
+.form-control:hover::placeholder {
+    color: black;
+}
+
+#suggest_username {
+
+    width: 100px;
+
+}
+
+.add_page_buttons {
+
+    
+    display: flex;
+    width: 670px;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn.btn-primary.push_button {
+    
+    background-color: rgb(181, 131, 141);
+    box-shadow: -3px 3px rgb(109, 104, 117);
+    border-color: white;
+    color: white;
+}
+
+.btn.btn-primary.push_button:hover {
+    background-color: rgb(109, 104, 117);
+    box-shadow: 3px -3px rgb(181, 131, 141);
+    border-color: rgb(109, 104, 117);
+    color: white;
+
+}
+
+.signup_input_text {
+
+    color: white;
+    width: fit-content;
+    margin: 0px;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 1px;
+    padding-inline: 3px;
+    line-height: 1.7rem;
+    background-color: rgba(109, 104, 117 , 0.6)
+}
+
+.form-label {
+
+    font-size: large;
+    width: fit-content;
+
+    
+
+}
+
+.signup_form {
+
+    background-color: rgba(255, 205, 178, 0.400);
+    border-radius: 2rem;
+    justify-content: center;
+    min-width: 19rem;
+    max-width: 19rem;
+    align-items: center;
+    flex: 5;
+    padding-left: 2.5rem;
+    padding-block: 2rem;
+}
+
+.signup_inputs {
+
+    width: fit-content;
+
+    margin-bottom: 20px;
+    padding: 0px;
+}
+
+.label_text {
+    
+    color: white;
+    text-shadow: 0.7px 0.7px  black;
+
+}
+
+.btn.btn-primary.signup_button {
+
+    display: flex;
+    flex: 1;
+    background-color: rgb(181, 131, 141);
+    border: 3px solid rgb(255, 255, 255);
+    justify-content: center;
+    align-items: center;
+
+}
+
+.btn.btn-primary.login_button {
+
+    display: flex;
+    flex: 1;
+    background-color: rgb(181, 131, 141);
+    border: 3px solid rgb(255, 255, 255);
+    justify-content: center;
+    align-items: center;
+
+}
+
+#welcome_message {
+    
+    flex: 1;
+    color: white;
+    text-shadow: -3px -3px rgb(109, 104, 117);
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    transition:  2.5s;
+
+
+}
+
+#welcome_message_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#welcome_message:hover {
+
+    font-size: 120px;
+    color: rgb(109, 104, 117);
+    text-shadow: 3px 3px rgb(255, 205, 178);
+
+}
+
 

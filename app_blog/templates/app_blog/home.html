@@ -5,12 +5,12 @@
 <div class="block_div">
     <div class="container">
         <div class="main-content" style="margin-top: 100px">
-            <div class="grid-container" style="grid-template-columns: auto auto; display: grid; grid-auto-columns: auto;">
+            <div class="flex-container" style="  display: flex;  flex-wrap: wrap;">
                 {% for post in posts %}
-                    <div class="grid-item">
-                        <div class="card" style="width: 18rem; margin: 1rem;" >
+                    <div class="flex-item" style="flex: 10 10 auto;  height: fit-content; min-height: 500px;">
+                        <div class="card" style="width: 18rem; margin: 1rem; " >
                             {% if post.image %}
-                                <img src="{{ post.image.import_something.url }}" class="card-img-top" alt="..." style=" object-fit: fill; object-position: center; max-height: 27rem;">
+                                <img src="{{ post.image.import_something.url }}" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ post.specs.title }}</h5>
                                     <p class="card-text">{{ post.specs.index }}</p>
@@ -36,9 +36,9 @@
             <!-- Your sidebar content here -->
             <div class="grid-container" style="display: grid; grid-template-columns:auto auto; grid-auto-columns: auto;">
                 {% for suggest in suggests_follow%}
-                    <span class="grid-item"><h4 id="suggest_username">{{suggest.username}}</h4></span>
-                    <form action="" method="POST">
-                        <span class="grid-item"><a class="btn btn-light" href="{% url 'app_blog:follow_unfollow' username=suggest.username %}" type="submit"> follow </a></span>
+                    <span class="grid-item"><h4 id="suggest_username">{{suggest.username}}</h4></span> 
+                    <form action="" method="POST" style="width: 70px; margin-inline: auto;">
+                        <span class="grid-item"><a   class="btn btn-dark" href="{% url 'app_blog:follow_unfollow' username=suggest.username %}" type="submit"> follow </a></span>
                     </form>
                 {%endfor%} 
             </div>
@@ -46,8 +46,9 @@
             <div class="grid-container" style="display: grid; grid-template-columns:auto auto; grid-auto-columns: auto;">
                 {% for suggest in suggests_unfollow%}
                     <span class="grid-item"><h4 id="suggest_username">{{suggest.username}}</h4></span>
-                    <form action="" method="POST">
-                        <span class="grid-item"><a class="btn btn-dark" href="{% url 'app_blog:follow_unfollow' username=suggest.username %}" type="submit"> unfollow </a></span>
+                    
+                    <form action="" method="POST" style="width: 70px; margin-inline: auto;">
+                        <span class="grid-item"><a class="btn btn-dark"   href="{% url 'app_blog:follow_unfollow' username=suggest.username %}" type="submit"> unfollow </a></span>
                     </form>
                 {%endfor%} 
             </div>

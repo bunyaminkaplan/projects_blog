@@ -3,39 +3,36 @@
 {% block content %}
 
 
-<div class="block_div">
-  <form action="" method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
-      
-      <div class="mb-3">
-
-        <label for="post_title" class="form-label">Title</label>
-        <input type="text" class="form-control" id="post_title" name="post_title" required="">
-        
+<div class="block_div add_page container" >
+  <form action="" method="POST" enctype="multipart/form-data" style="width: 40%;">
+    {% csrf_token %}
+    
+    <div class="grid-container" style="display: grid; grid-auto-columns: auto; grid-template-columns: auto auto;">
+      <div class="grid-item" style="margin: 3rem;">  
+        <div class="mb-3" > 
+          <input type="text" maxlength="20" class="form-control" id="post_title" name="post_title" required="" placeholder="Title">
+        </div>
       </div>
-      <div class="mb-3">
-        <label for="post_index" class="form-label">Index</label>
-        <input type="text" class="form-control" id="post_index" name="post_index" required="">
+
+      <div class="grid-item" style="margin: 3rem;"> 
+        <div class="mb-3">
+          <textarea maxlength="100" class="form-control" id="post_index" name="post_index" required style="size-adjust: 10rem; resize: none;" rows="5" placeholder="...Index..."></textarea>
+        </div>
       </div>
+    </div>
+    
+    <div class="add_page_buttons">
+      <input type="button" style="margin: 2rem;" class="btn btn-dark choose_button" value="Choose" name="button_import_something" onclick="document.getElementById('id_import_something').click()">
+      <button type="submit" class="btn btn-primary push_button" style="margin: 2rem;"> Push! </button>
       
-      <button type="submit" class="btn btn-primary" > Push! </button>
-      
-      <input type="text" name="current_user_username" maxlength="20" id="id_current_user_username" value="{{request.user.username}}" readonly>
-      <input type="text" name="generated_code" maxlength="20" id="id_generated_code" value="{{code}}" readonly>
-
-      <input type="button" class="btn btn-dark" value="Choose" name="button_import_something" onclick="document.getElementById('id_import_something').click()">
-      <input type="file" name="import_something" accept="image/*" id="id_import_something" style="display: none;">
-
-
-
-      
-
-      
-
-    </form>
-
+    </div>
+    
+    <input type="text" name="current_user_username" maxlength="20" id="id_current_user_username" value="{{request.user.username}}" readonly>
+    <input type="text" name="generated_code" maxlength="20" id="id_generated_code" value="{{code}}" readonly>
+    <input type="file" name="import_something" accept="image/*" id="id_import_something" style="display: none;">
+  </form>
 </div>
-  
+
 
 {% endblock%}
 

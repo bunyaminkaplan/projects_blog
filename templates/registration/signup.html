@@ -3,21 +3,35 @@
 
 <div class="block_div">
 
-<div class="container" style="width: 80%;">
-    <form action="" method="POST" style="margin-inline: 20%;">
+<div class="container" style="width: 80%; display: flex; align-items: center; justify-content: center;">
+    <form action="" method="POST" class="signup_form">
         {% csrf_token %}
 
-        {% for field in form %}
+        <div class="form-label" >
+            <label class="label_text" for="id_username">Username:</label>
+        </div>
+        <div class="signup_inputs" >            
+            <input class="signup_input_text" type="text" name="username" maxlength="20" autocapitalize="none" autocomplete="username" autofocus="" required="" aria-describedby="id_username_helptext" id="id_username">
+        </div>
+        
 
-        <div class="form-label" style="margin-left: 3rem;">
-            {{field.label_tag}}
+        <div class="form-label" >
+            <label class="label_text" for="id_password1">Password:</label>
         </div>
-        <div class="signup_inputs" style="margin-left: 3rem;">            
-            {{field}}
+        <div class="signup_inputs" >            
+            <input class="signup_input_text" type="password" name="password1" autocomplete="new-password" required="" aria-describedby="id_password1_helptext" id="id_password1">
         </div>
-        {%endfor%}
+        
+
+        <div class="form-label" >
+            <label class="label_text" for="id_password2">Password confirmation:</label>
+        </div>
+        <div class="signup_inputs" >            
+            <input class="signup_input_text" type="password" name="password2" autocomplete="new-password" required="" aria-describedby="id_password2_helptext" id="id_password2">
+        </div>
+        
         <br>
-   <button type="submit" class="btn btn-primary" value="signup" style="margin-left: 3rem;">Signup</button>
+   <button type="submit" class="btn btn-primary signup_button" value="signup" >Signup</button>
   </form>
 
 </div>
