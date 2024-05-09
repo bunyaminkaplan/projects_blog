@@ -31,7 +31,7 @@ class following_tracker(models.Model):
 
 def generate_filename(instance, filename):
     ext = filename.split('.')[-1]
-    new_filename = f'{instance.current_user_username}_{instance.added_at}.{ext}'
+    new_filename = f'{instance.current_user_username}_{instance.added_at.timestamp()}.{ext}'
     return os.path.join(f'images/{instance.current_user_username}', new_filename)
 
 

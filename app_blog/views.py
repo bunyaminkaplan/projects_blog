@@ -6,19 +6,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required
 from  . import forms
-
-
-
-
-
-
-
+import os
 
 @login_required(login_url='/login/')
 def home(request):
 
-
-    
     following_accounts_usernames = []
     home_page_posts_gcs = []
     home_page_posts = []
@@ -40,9 +32,7 @@ def home(request):
     
     
     sorted_home_page_posts = sorted(home_page_posts , key=lambda x: x.added_at , reverse=True)
-        #home_page_posts.append(models.user_post.objects.get(id= post_id))
-        #print(f' post id {post_id}')
-
+    
 
 
 
@@ -61,19 +51,7 @@ def home(request):
         else:
             suggest_usernames_follow.append(item)
 
-    
-    #print(f' follow {suggest_usernames_follow}')
-    #print(f' unfollow {suggest_usernames_followed}')
-
-
-        
-    
-
-
     return render(request, 'app_blog/home.html' , context={ 'posts' : sorted_home_page_posts , 'suggests_follow' :  suggest_usernames_follow , 'suggests_unfollow' : suggest_usernames_followed })
-
-
-
 
 @login_required(login_url='/login/')
 def add(request):
@@ -117,20 +95,13 @@ def add(request):
         form_image = forms.load_image_form()
         return render(request , 'app_blog/add.html', context= {'form_image' : form_image , 'code' : generated_post_code})
     
-
-
-
-
-
 class user_signup(CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('login')
     template_name = "registration/signup.html"
     
-
 def redirect_to_home(request):
     return redirect(reverse('app_blog:home'))
-
 
 def follow_unfollow(request , username):
     follow_tracker = models.following_tracker.objects.filter(who_requested = request.user.username).filter(followed_who = username).all()
@@ -149,3 +120,20 @@ def follow_unfollow(request , username):
 
     return redirect(reverse('app_blog:home'))
 
+def delete_post(request, gen_code): 
+    
+    if request.user.username == models.user_post.objects.get(generated_code = gen_code).who_pushed:
+        
+        filename = f"{request.user.username}_{models.load_image.objects.get(generated_code = gen_code).added_at.timestamp()}"
+        print(filename)
+
+        models.load_image.objects.get(generated_code = gen_code).delete()
+        models.user_post.objects.get(generated_code = gen_code).delete()
+        
+        for file in os.listdir(path= f'media/images/{request.user.username}'):
+            if file.startswith(filename):
+                os.remove(path=f'media/images/{request.user.username}/{file}')
+                print(f"{file} has been deleted.")
+            #auto folder deleting will be here
+
+        return redirect(reverse('app_blog:home'))

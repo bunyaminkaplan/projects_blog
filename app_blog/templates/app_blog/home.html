@@ -23,8 +23,12 @@
                                 </div>
                             {% endif %}
                             <div class="card-body" style="border-bottom-left-radius: 2rem; border-bottom-right-radius: 2rem;">
-                                <a href="#" class="card-link">delete(disabled)</a>
-                                <a href="#" class="card-link">like(disabled)</a>
+                                
+                                {% if post.specs.who_pushed == request.user.username %}
+                                    <a href="{% url 'app_blog:delete_post' gen_code=post.generated_code %}" class="btn btn-dark ">delete</a>
+                                    <!--  <a href="#" class="card-link">like(disabled)</a> -->
+                                {% endif%}
+                                
                             </div>
                         </div>
                     </div>          
