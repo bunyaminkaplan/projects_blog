@@ -13,7 +13,7 @@ urlpatterns = [
     path('accounts/profile/' , views.redirect_to_home , name='redirect_to_home'),
     path('follow_unfollow/<str:username>' , views.follow_unfollow , name='follow_unfollow'),
     path('delete/<int:gen_code>' , views.delete_post , name='delete_post'),
-    
+    path('test_json' , views.posts_json , name= 'json_post'),
  
 ]
 

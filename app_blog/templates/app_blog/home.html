@@ -10,7 +10,7 @@
                     <div class="flex-item" style="flex: 10 10 auto;  height: fit-content; min-height: 500px;">
                         <div class="card" style="width: 18rem; margin: 1rem; " >
                             {% if post.image %}
-                                <img src="{{ post.image.import_something.url }}" class="card-img-top" alt="...">
+                                <img src="{{ post.image.uploaded_url }}" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ post.specs.title }}</h5>
                                     <p class="card-text">{{ post.specs.index }}</p>

@@ -41,6 +41,7 @@ class load_image(models.Model):
     import_something = models.ImageField(upload_to=generate_filename)
     current_user_username = models.CharField(max_length=20)
     generated_code = models.IntegerField()
+    uploaded_url = models.TextField(default= 'none')
     
 
 class generate_code(models.Model):
