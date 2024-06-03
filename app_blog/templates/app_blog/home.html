@@ -9,17 +9,20 @@
                 {% for post in posts %}
                     <div class="flex-item" style="flex: 10 10 auto;  height: fit-content; min-height: 500px;">
                         <div class="card" style="width: 18rem; margin: 1rem; " >
-                            {% if post.image %}
+                            {% if post.specs.image_added %}
+                                <!-- burada post.image in none olup olmadigi kontrol edip daha sonra delete isi kontrol edilcek , bilgiler ust uste biniyor orada-->
                                 <img src="{{ post.image.uploaded_url }}" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ post.specs.title }}</h5>
                                     <p class="card-text">{{ post.specs.index }}</p>
+                                    <p style="text-align: end; padding-right: 1rem; font-size:large; font-style: italic;" class="card-text"> pushed_by {{ post.specs.who_pushed}}</p>
                                 </div> 
                 
                             {% else %}
                                 <div class="card-body" id="card-body-without-image">
                                     <h5 class="card-title">{{ post.specs.title }}</h5>
                                     <p class="card-text">{{ post.specs.index }}</p>
+                                    <p style="text-align: end; padding-right: 1rem; font-size:large; font-style: italic;" class="card-text"> pushed_by {{ post.specs.who_pushed}}</p>
                                 </div>
                             {% endif %}
                             <div class="card-body" style="border-bottom-left-radius: 2rem; border-bottom-right-radius: 2rem;">

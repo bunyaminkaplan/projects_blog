@@ -22,14 +22,14 @@
     </div>
     
     <div class="add_page_buttons">
-      <input type="button" style="margin: 2rem;" class="btn btn-dark choose_button" value="Choose" name="button_import_something" onclick="document.getElementById('id_import_something').click()">
+      <input type="button" style="margin: 2rem;" class="btn btn-dark choose_button" value="Choose" name="button_local_url" onclick="document.getElementById('id_local_url').click()">
       <button type="submit" class="btn btn-primary push_button" style="margin: 2rem;"> Push! </button>
       
     </div>
     
     <input type="text" name="current_user_username" maxlength="20" id="id_current_user_username" value="{{request.user.username}}" readonly>
     <input type="text" name="generated_code" maxlength="20" id="id_generated_code" value="{{code}}" readonly>
-    <input type="file" name="import_something" accept="image/*" id="id_import_something" style="display: none;">
+    <input type="file" name="local_url" accept="image/*" id="id_local_url" style="display: none;">
   </form>
 </div>
 
